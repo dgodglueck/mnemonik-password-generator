@@ -14,6 +14,9 @@ def generate_password():
     entry_output.delete(0, tk.END)
     entry_output.insert(0, password)
     entry_output.config(state='readonly')
+    
+    char_count = len(password)
+    label_char_count.config(text=f"Zeichenanzahl: {char_count}")
 
 def copy_to_clipboard():
     password = entry_output.get()
@@ -47,6 +50,9 @@ if __name__ == "__main__":
     entry_output = tk.Entry(root, width=30, font=("Courier", 12, "bold"), 
                              state='readonly', justify='center')
     entry_output.pack(pady=5)
+
+    label_char_count = tk.Label(root, text="Zeichenanzahl: 0", font=("Arial", 9), fg="#666")
+    label_char_count.pack(pady=2)
 
     btn_copy = tk.Button(root, text="In Zwischenablage kopieren", command=copy_to_clipboard, 
                          bg="#e0e0e0", font=("Arial", 9))
